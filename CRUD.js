@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
   switch (method) {
     case 'GET':
       switch (url) {
-        case '/';
+        case '/':
           fs.readFile(path.join(__dirname, 'index.html'), (err) => {
             if (err) {
               res.writeHead(500, { 'content-type': 'text/plain' })
