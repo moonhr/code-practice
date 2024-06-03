@@ -25,7 +25,7 @@ const server = http.createServer((req, res) => {
     <html>
       <head>
         <title>배열요소의 특정 요소</title>
-        <meta charset = "uft-8"
+        <meta charset = "utf-8"
       </head>
       <body>
         <h1>필터링과 매핑</h1>
@@ -49,5 +49,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(3000, () => {
-  console.log('http://licalhost:3000');
+  console.log('http://localhost:3000');
 });
