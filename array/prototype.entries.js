@@ -9,3 +9,5 @@ console.log(iterator1.next().value);
 
 console.log(iterator1.next().value);
 // Expected output: Array [1, "b"]
+
+//* 배열 내부에 있는 문자열 요소를 [key.value]이러한 모양 객체로 반환
