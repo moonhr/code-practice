@@ -4,17 +4,17 @@ const createPerson = (callback) => {
 };
 
 const setName = (person, callback) => {
-  person.name = '공욱재';
+  person.name = '메타몽';
   callback(person, setAge);
 };
 
 const setAge = (person, callback) => {
-  person.age = 26;
+  person.age = 6;
   callback(person, setJob);
 };
 
 const setJob = (person) => {
-  person.job = '미남';
+  person.job = '홈프로텍터';
   console.log(person);
 };
 

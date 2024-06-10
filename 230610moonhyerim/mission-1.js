@@ -36,9 +36,9 @@ class Person {
 }
 
 const person = new Person();
-person.name = '공욱재';
-person.age = 26;
-person.job = '미남';
+person.name = '메타몽';
+person.age = 6;
+person.job = '홈프로텍터';
 
 //객체 속성 출력
 console.log("Name:", person.name);
