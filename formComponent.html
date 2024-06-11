@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>폼 컴포넌트 예제</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    //사용자 정보를 캡슐에 담은 함수
+    const getUserInfo = () => {
+      return {
+        name: '메타몽',
+        age: 12,
+        job: '홈프로텍터'
+      }
+    }
+
+    //폼 컴포넌트
+    const formComponent = (action, method) => {
+      const userInfo = getUserInfo();
+      return `
+<form action="${action}" method="${method}">
+  <label for="name">이름:</label>
+  <input type="text" id="name" name="name" value="${userInfo.name}" required>
+  <label for="age">나이:</label>
+  <input type="number" name="age" id="age" value="${userInfo.age}" required>
+  <label for="job">설명:</label>
+  <input type="text" id="job" name="job" value="${userInfo.job}" required>
+  <button type="submit">제출</button>
+</form>`
+    }
+    //모든 컴포넌트를 조합하는 화살표 함수
+    const App = (formAction, formMethod) => `
+    <h1>함수의 리턴은</h1>
+    <h2>사람의 머리를 맑게 해준다.</h2>
+    ${formComponent(formAction, formMethod)}
+    `
+
+    //페이지가 로드될 때 컴포넌트를 렌더링
+    const renderApp = (formAction, formMethod) => {
+      const appDiv = document.getElementById('root')
+      appDiv.innerHTML = App(formAction, formMethod)
+    }
+
+    //예시로 "/submit" 액션과 "post" 메서드를 사용하여 렌더링
+    document.addEventListener("DOMcontentLoaded", () => {
+      renderApp("/submit", "post")
+    })
+  </script>
+</body>
+
+</html>
