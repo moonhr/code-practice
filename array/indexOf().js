@@ -6,8 +6,20 @@ console.log(beasts.indexOf('bison'));
 // Expected output: 1
 
 // Start from index 2
-console.log(beasts.indexOf('bison', 2));
+console.log(beasts.indexOf('bison', 2)); //두번째 bison찾기
 // Expected output: 4
 
 console.log(beasts.indexOf('giraffe'));
 // Expected output: -1
+
+//* 요소가 나타난 모든 위치 찾기
+const indices = [];
+const array = ["a", "b", "a", "c", "a", "d"];
+const element = "a";
+let idx = array.indexOf(element);
+while (idx !== -1) {
+  indices.push(idx);
+  idx = array.indexOf(element, idx + 1);
+}
+console.log(indices);
+// [0, 2, 4]
