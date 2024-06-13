@@ -19,3 +19,13 @@ console.log(animals.slice(2, -1));
 
 console.log(animals.slice());
 // Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
+
+
+
+
+let fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+let citrus = fruits.slice(1, 3);
+
+// fruits contains ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
+// citrus contains ['Orange','Lemon']
+
