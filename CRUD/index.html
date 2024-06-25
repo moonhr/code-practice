@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple CRUD with SQLite3</title>
+</head>
+<body>
+    <h1>Simple CRUD Application</h1>
+    <form id="entryForm">
+        <input type="text" id="entryInput" placeholder="Enter text" required>
+        <button type="submit">Add Entry</button>
+    </form>
+    <ul id="entryList"></ul>
+
+    <script>
+        async function fetchEntries() {
+            const response = await fetch('/entries');
+            const entries = await response.json();
+            const entryList = document.getElementById('entryList');
+            entryList.innerHTML = '';
+            entries.forEach(entry => {
+                const li = document.createElement('li');
+                li.textContent = entry.text;
+                li.dataset.id = entry.id;
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.onclick = () => deleteEntry(entry.id);
+
+                const updateBtn = document.createElement('button');
+                updateBtn.textContent = 'Update';
+                updateBtn.onclick = () => updateEntry(entry.id);
+
+                li.appendChild(deleteBtn);
+                li.appendChild(updateBtn);
+                entryList.appendChild(li);
+            });
+        }
+
+        async function addEntry(text) {
+            await fetch('/entries', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text })
+            });
+            fetchEntries();
+        }
+
+        async function deleteEntry(id) {
+            await fetch(`/entries/${id}`, {
+                method: 'DELETE'
+            });
+            fetchEntries();
+        }
+
+        async function updateEntry(id) {
+            const newText = prompt('Enter new text:');
+            if (newText) {
+                await fetch(`/entries/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: newText })
+                });
+                fetchEntries();
+            }
+        }
+
+        document.getElementById('entryForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const entryInput = document.getElementById('entryInput');
+            addEntry(entryInput.value);
+            entryInput.value = '';
+        });
+
+        fetchEntries();
+    </script>
+</body>
+</html>
