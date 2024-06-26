@@ -1,6 +1,3 @@
-import { Agent } from "http";
-import { connected } from "process";
-
 //원본배열 : 객체의 배열
 const originalArray = [
   {name: '공욱재', age: 25},
