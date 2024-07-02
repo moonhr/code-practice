@@ -22,8 +22,13 @@ try {
   //오류: Argument of type 'string' is not assignable to parameter of type 'number'.
 
   //소수의 값을 전달하면 의도하지 않았음으로 에러 발생 
-  const resultWithString:number = add (2.5, 3);
-  console.log(resultWithString);
+  // const resultWithString:number = add (2, 3);
+  // console.log(resultWithString);
 } catch (error) {
-  console.error(error.message);
+  //error 객체의 타입을 좁히는 과정이 필요
+  if (error instanceof Error) {
+    console.error(error.message);
+  } else {
+    console.error("Unknown error", error);
+  }
 }
